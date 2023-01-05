@@ -1,3 +1,21 @@
+@mixin mobile{
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin laptop{
+    @media screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
 .formContainer{
     background-color: rgb(148, 115, 135);
     height: 100vh;
@@ -98,9 +116,19 @@
         display: flex;
         overflow: hidden;
 
+        @include tablet{
+            width: 98%;
+            height: 98%;
+        }
+
         .sidebar{
             flex: 1;
             background-color: rgb(39, 39, 39);
+            position: relative;
+
+            @include mobile{
+                width: 30%;
+            }
 
             .navbar{
                 display: flex;
@@ -113,6 +141,10 @@
 
                 .logo{
                     font-weight: bold;
+
+                    @include tablet{
+                        display: none;
+                    }
                 }
 
                 .user{
@@ -127,12 +159,21 @@
                         object-fit: cover;
                     }
 
+                    span{
+                        padding-right: 10px;
+                    }
+
                     button{
                         background-color: rgb(73, 72, 76);
                         color:rgb(226, 226, 226);
                         font-size: 10px;
                         border: none;
                         cursor: pointer;
+
+                        @include tablet{
+                                position: absolute;
+                                bottom: 10px;
+                            }
                     }
                 }
             }
@@ -169,6 +210,12 @@
                     height: 50px;
                     border-radius: 50%;
                     object-fit: cover;
+
+                    @include mobile{
+                        width: 30px;
+                        height: 30px;
+                        align-self: start;
+                    }
                 }
 
                 .userChatInfo{
@@ -201,10 +248,9 @@
                 display: flex;
                 gap: 10px;
 
-                .img{
+                img{
                     height: 24px;
                     cursor: pointer;
-
                 }
             }
 
@@ -225,12 +271,20 @@
                         color: rgb(148, 146, 146);
                         font-weight: 300;
 
+                        @include mobile{
+                            font-size: x-small;
+                        }
 
                         img{
                             width: 48px;
                             height: 48px;
                             border-radius: 50%;
                             object-fit: cover;
+
+                            @include mobile{
+                                height: 30px;
+                                width: 30px;
+                            }
                         }
                     }
 
@@ -240,10 +294,14 @@
                         flex-direction: column;
                         gap: 10px;
 
+                        @include mobile{
+                            margin-top: -15px;
+                        }
+
                         p{
                             background-color: rgb(19, 14, 14);
                             color: rgb(148, 146, 146);
-                            padding: 10px 20px;
+                            padding: 5px 20px;
                             max-width: max-content;
                             border-radius: 0px 10px 10px 10px;
                         }
@@ -299,10 +357,19 @@
                     align-items: center;
                     gap: 10px;
                     padding-left: 10px;
+
+                    @include mobile{
+                        gap: 5px;
+                    }
                     
                     img{
                         height: 24px;
                         cursor: pointer;
+
+                        @include mobile{
+                            height: 12px;
+                            width: 12px;
+                        }
                     }
 
                     button{
@@ -311,6 +378,10 @@
                         color: rgb(199, 198, 207);
                         background-color: rgb(37, 37, 37);
                         cursor: pointer;
+
+                        @include mobile{
+                            padding: 5px 10px;
+                        }
                     }
                 }
             }
