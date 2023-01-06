@@ -2,14 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import Add from '../img/addAvatar.png';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage } from '../firebase';
+import { auth, storage, db } from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { async } from '@firebase/util';
+import { doc, setDoc } from "firebase/firestore"; 
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const [err, setErr] = useState(null)
+  const [err, setErr] = useState(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const displayName = e.target[0].value;
     const email = e.target[1].value;
@@ -17,24 +19,26 @@ const Register = () => {
     const file = e.target[3].files[0];
 
     try{
-      const res = createUserWithEmailAndPassword(auth, email, password);
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(res.user);
+      const storageRef = ref(storage, displayName);
 
-      const storageRef = ref(storage, 'images/rivers.jpg');      
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      
-      uploadTask.on(
-        (err) => {
-          setErr(err.message)
-        }, 
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
-            await updateProfile(res.user, {
-              displayName,
-              photoURL: downloadURL
-            })
+      await uploadBytesResumable(storageRef, file)
+      .then(() => {
+        getDownloadURL(storageRef).then(async(downloadURL) => {
+          await updateProfile(res.user, {
+            displayName,
+            photoURL: downloadURL
           });
-        }
-      );
+          await setDoc(doc(db, "users", res.user.uid), {
+            uid: res.user.uid,
+            displayName,
+            email,
+            photoURL: downloadURL
+          });
+          await setDoc(doc(db, "userChats", res.user.uid), {});
+        });
+      })
     }catch(err){
       if (err.code === 'auth/email-already-in-use') {
         setErr('This email address is already in use');
