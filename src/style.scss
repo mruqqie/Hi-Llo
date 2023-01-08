@@ -180,6 +180,11 @@
 
             .search{
                 border-radius: 1px solid grey;
+                padding: 10px;
+
+                .err{
+                    color: wheat;
+                }
 
                 .searchForm{
                     padding: 10px;
@@ -190,6 +195,10 @@
                         color: white;
                         outline: none;
                     }
+                }
+
+                .userChat{
+                    padding: 0px;
                 }
             }
 

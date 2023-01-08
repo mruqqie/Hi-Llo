@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [err, setErr] = useState(null);
@@ -54,8 +54,8 @@ const Register = () => {
         <div className='formWrapper'>
             <span className="logo">Hi-Llo</span>
             <span className="title">Sign up</span>
+            {err && <span className='err'>{err}</span>}
             <form onSubmit={handleSubmit}>
-              {err && <span className='err'>{err}</span>}
               <input type='text' placeholder='Username' />
               <input type='email' placeholder='Email' />
               <input type='password' placeholder='Password' />
@@ -66,7 +66,7 @@ const Register = () => {
               <input type='file' id='file' className='file' />
               <button>Sign up</button>
             </form>
-            <p>Already have an account? Login</p>
+            <p>Already have an account? <Link to='/login'>Login</Link></p>
         </div>
     </div>
   )
