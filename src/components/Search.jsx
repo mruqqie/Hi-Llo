@@ -45,32 +45,38 @@ const Search = () => {
       : user.uid + currentUser.uid;
     
     try{
-      const res = await getDoc(doc(db, "chats", combinedId))
+      const res = await getDoc(doc(db, "chats", combinedId));
       // Create chat between the two users if chat doesn't already exist.
       if(!res.exists()){
-        await setDoc(doc(db, "chats", combinedId), { messages: [] });
+        await setDoc(doc(db, "chats", combinedId), { 
+          uid: currentUser.uid,
+          chatterUid: user.uid,
+          messages: [] 
+        });
 
-        //update userChats
-        // await updateDoc(doc(db, "userChats", currentUser.uid),{
-        //   [combinedId+".userInfo"]: {
-        //     uid: user.uid,
-        //     displayName: user.displayName,
-        //     photoURL: user.photoURL
-        //   },
-        //   [combinedId+".date"]: serverTimestamp()
-        // });
-        // await updateDoc(doc(db, "userChats", user.uid),{
-        //   [combinedId+".userInfo"]: {
-        //     uid: currentUser.uid,
-        //     displayName: currentUser.displayName,
-        //     photoURL: currentUser.photoURL
-        //   },
-        //   [combinedId+".date"]: serverTimestamp()
-        // });
+      //  update userChats
+        await updateDoc(doc(db, "userChats", currentUser.uid),{
+          [combinedId + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL
+          },
+          [combinedId + ".date"]: serverTimestamp()
+        });
+        await updateDoc(doc(db, "userChats", user.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
       }
     } catch(err){
       console.log(err);
     }
+    setUser(null);
+    setUsername("");
   }
 
   return (
@@ -80,7 +86,8 @@ const Search = () => {
           type="text"
           placeholder='Search for a user'
           onChange={handleChange}
-          onKeyDown={handleKey} />
+          onKeyDown={handleKey}
+          value={username} />
       </div>
       {err && <span className='err'>{err}</span>}
       {user && 
