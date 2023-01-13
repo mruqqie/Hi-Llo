@@ -8,21 +8,22 @@ const Message = (message) => {
 
   console.log(message)
   return (
-    <div className='message owner'>
-      {/* <div className="messageInfo">
+    <div
+      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+    >
+      <div className="messageInfo">
         <img
-          src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+          src={message.senderId === currentUser.uid ? 
+            currentUser.photoURL : data.user.photoURL}
           alt=""
         />
         <span>Just now</span>
       </div>
       <div className="messageContent">
-        <p>Hey</p>
-        <img
-          src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
-          alt=""
-        />
-      </div> */}
+        <p>{message.text}</p>
+        {message.img &&
+         <img src={message.img} alt=""/>}
+      </div>
     </div>
   )
 }
