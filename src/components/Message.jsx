@@ -1,14 +1,22 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { ChatContext } from '../context/ChatContext'
+import React, { useContext, useEffect, useRef } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { ChatContext } from '../context/ChatContext';
+import moment from 'moment/moment';
 
-const Message = (message) => {
+const Message = ({message}) => {
   const {currentUser} = useContext(AuthContext);
   const {data} = useContext(ChatContext);
 
-  console.log(message)
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({behaviour: "smooth"})
+  }, [message]);
+  
+
   return (
     <div
+      ref={ref}
       className={`message ${message.senderId === currentUser.uid && "owner"}`}
     >
       <div className="messageInfo">
@@ -17,10 +25,10 @@ const Message = (message) => {
             currentUser.photoURL : data.user.photoURL}
           alt=""
         />
-        <span>Just now</span>
+        <span>{moment(message.date.toDate()).format('MM/D, h:mm a')}</span>
       </div>
       <div className="messageContent">
-        <p>{message.text}</p>
+        {message.text && <p>{message.text}</p>}
         {message.img &&
          <img src={message.img} alt=""/>}
       </div>
