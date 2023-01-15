@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Hi-Llo/static/css/main.1ed77a06.css",
+    "main.js": "/Hi-Llo/static/js/main.512d7afc.js",
+    "index.html": "/Hi-Llo/index.html",
+    "main.1ed77a06.css.map": "/Hi-Llo/static/css/main.1ed77a06.css.map",
+    "main.512d7afc.js.map": "/Hi-Llo/static/js/main.512d7afc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ed77a06.css",
+    "static/js/main.512d7afc.js"
+  ]
+}
