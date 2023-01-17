@@ -300,7 +300,6 @@
                         span{
                             width: 40px;
                             font-size: x-small;
-                            text-align: right;
                         }
                     }
 
@@ -337,6 +336,10 @@
                                 color: rgb(12, 12, 17);
                                 background-color: rgb(98, 98, 104);
                             }
+                        }
+
+                        span{
+                            text-align: right;
                         }
 
                     }
