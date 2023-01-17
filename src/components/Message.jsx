@@ -25,7 +25,7 @@ const Message = ({message}) => {
             currentUser.photoURL : data.user.photoURL}
           alt=""
         />
-        <span>{moment(message.date.toDate()).format('MM/D, h:mm a')}</span>
+        <span>{moment(message.date.toDate()).format('h:mm a')}</span>
       </div>
       <div className="messageContent">
         {message.text && <p>{message.text}</p>}
