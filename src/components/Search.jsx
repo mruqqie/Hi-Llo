@@ -84,6 +84,7 @@ const Search = () => {
       <div className="searchForm">
         <input 
           type="text"
+          enterKeyHint='done'
           placeholder='Search for a user'
           onChange={handleChange}
           onKeyDown={handleKey}
