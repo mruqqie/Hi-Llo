@@ -1,6 +1,6 @@
 # HI-LLO
 
-Hi=Llo is a basic chat web application.
+Hi-Llo is a basic chat web application.
 
 ## Features
 * User Authentication.
