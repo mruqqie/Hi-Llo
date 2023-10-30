@@ -36,7 +36,8 @@ const Search = () => {
   }
   const handleChange = (e) => {setUsername(e.target.value)};
   const handleKey = (e) => {
-    e.code === "Enter" && handleSearch();
+    (e.code === "Enter" && handleSearch()) ||
+    (e.keyCode === 13 && handleSearch());
   };
 
   const handleSelect = async (e) => {
@@ -84,7 +85,7 @@ const Search = () => {
       <div className="searchForm">
         <input 
           type="text"
-          enterKeyHint='done'
+          enterKeyHint='enter'
           placeholder='Search for a user'
           onChange={handleChange}
           onKeyDown={handleKey}

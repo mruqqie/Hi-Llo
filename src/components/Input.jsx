@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import Img from '../img/img.png';
-import Attach from '../img/attach.png';
+import Img from '../img/img.ico';
+import Attach from '../img/attach.ico';
 import { ChatContext } from '../context/ChatContext';
 import { AuthContext } from '../context/AuthContext';
 import { arrayUnion, doc, serverTimestamp, Timestamp, updateDoc } from 'firebase/firestore';
