@@ -1,6 +1,6 @@
 # HI-LLO
 
-[Hi=Llo](https://hi-llo.netlify.app/register) is a basic chat web application.
+Hi-Llo is a basic chat web application.
 
 ## Features
 * User Authentication.
