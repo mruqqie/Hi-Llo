@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 
-const Chats = (handleChatClick) => {
+const Chats = ({handleChatClick}) => {
 	const [chats, setChats] = useState([]);
 
 	const { currentUser } = useContext(AuthContext);
