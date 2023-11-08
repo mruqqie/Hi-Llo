@@ -132,6 +132,18 @@
 			height: 98%;
 		}
 
+		.chatOff {
+			@include mobile {
+				display: none;
+			}
+		}
+
+		.sidebarOff {
+			@include mobile {
+				display: none;
+			}
+		}
+
 		.sidebar {
 			flex: 1;
 			background-color: rgb(255, 255, 255);
@@ -307,9 +319,9 @@
 				border-bottom: 1px solid rgb(0, 0, 0);
 
 				img {
-                    display: none;
+					display: none;
 					@include mobile {
-                        display: inline;
+						display: inline;
 						height: 24px;
 						cursor: pointer;
 					}

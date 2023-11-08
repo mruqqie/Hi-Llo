@@ -3,12 +3,12 @@ import Navbar from './Navbar';
 import Search from './Search';
 import Chats from './Chats';
 
-const Sidebar = () => {
+const Sidebar = ({handleChatClick, sidebarClass}) => {
   return (
-    <div className='sidebar'>
+    <div className={`sidebar ${sidebarClass}`}>
       <Navbar />
       <Search />
-      <Chats />
+      <Chats handleChatClick={handleChatClick} />
     </div>
   )
 }

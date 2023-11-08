@@ -3,16 +3,24 @@ import Sidebar from "../components/Sidebar";
 import Chat from "../components/Chat";
 
 const Home = () => {
-	const [sidebarClass, setSidebarClass] = useState("on");
+	const [sidebarClass, setSidebarClass] = useState("sidebarOn");
+	const [chatClass, setChatClass] = useState("chatOff")
 
-	const toggleSidebarClass = () => {
-		setSidebarClass(sidebarClass === "on" ? "off" : "on");
-	};
+	const handleBackClick = () => {
+		setSidebarClass("sidebarOn")
+		setChatClass("chatOff")
+	}
+
+	const handleChatClick = () => {
+		setSidebarClass("sidebarOff")
+		setChatClass("chatOn")
+	}
+
 	return (
 		<div className="home">
 			<div className="container">
-				<Sidebar />
-				<Chat />
+				<Sidebar className={sidebarClass} handleChatClick={handleChatClick} />
+				<Chat handleBackClick={handleBackClick} className={chatClass} />
 			</div>
 		</div>
 	);

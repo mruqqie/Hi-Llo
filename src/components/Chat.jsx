@@ -7,13 +7,13 @@ import More from "../img/more.png";
 import ArrowBack from "../img/arrowback.ico";
 import { ChatContext } from "../context/ChatContext";
 
-const Chat = () => {
+const Chat = ({handleBackClick, className}) => {
 	const { data } = useContext(ChatContext);
 
 	return (
-		<div className="chat">
+		<div className={`chat ${className}`}>
 			<div className="chatInfo">
-        <img src={ArrowBack} alt="" className="arrowback" />
+				<img src={ArrowBack} alt="" className="arrowback" onClick={handleBackClick} />
 				<span>{data.user?.displayName}</span>
 				<div className="chatIcons">
 					<img src={Cam} alt="" />

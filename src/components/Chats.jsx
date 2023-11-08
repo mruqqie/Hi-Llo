@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
 import { db } from '../firebase';
 
-const Chats = () => {
+const Chats = (handleChatClick) => {
   const [chats, setChats] = useState([]);
 
   const {currentUser} = useContext(AuthContext);
@@ -28,6 +28,7 @@ const Chats = () => {
       type: "CHANGE_USER",
       payload: u
     });
+    handleChatClick()
   }
 
   return (
