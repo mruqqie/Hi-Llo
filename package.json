@@ -1,7 +1,7 @@
 {
   "name": "hillo",
   "version": "0.1.0",
-  "homepage": "https://mruqqie.github.io/youtube_clone/",
+  "homepage": "https://mruqqie.github.io/Hi-Llo",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
