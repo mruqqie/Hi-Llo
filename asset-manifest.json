@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/Hi-Llo/static/css/main.1ed77a06.css",
-    "main.js": "/Hi-Llo/static/js/main.512d7afc.js",
+    "main.css": "/Hi-Llo/static/css/main.c32b551e.css",
+    "main.js": "/Hi-Llo/static/js/main.dca448f9.js",
+    "static/media/arrowback.ico": "/Hi-Llo/static/media/arrowback.56403482fa7c876d1abe.ico",
+    "static/media/attach.ico": "/Hi-Llo/static/media/attach.b0d3a0ec7c38ba567bf7.ico",
+    "static/media/img.ico": "/Hi-Llo/static/media/img.47ea52d08ae9d64fda5b.ico",
     "index.html": "/Hi-Llo/index.html",
-    "main.1ed77a06.css.map": "/Hi-Llo/static/css/main.1ed77a06.css.map",
-    "main.512d7afc.js.map": "/Hi-Llo/static/js/main.512d7afc.js.map"
+    "main.c32b551e.css.map": "/Hi-Llo/static/css/main.c32b551e.css.map",
+    "main.dca448f9.js.map": "/Hi-Llo/static/js/main.dca448f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ed77a06.css",
-    "static/js/main.512d7afc.js"
+    "static/css/main.c32b551e.css",
+    "static/js/main.dca448f9.js"
   ]
 }
