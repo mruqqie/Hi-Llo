@@ -19,7 +19,7 @@ const Home = () => {
 	return (
 		<div className="home">
 			<div className="container">
-				<Sidebar className={sidebarClass} handleChatClick={handleChatClick} />
+				<Sidebar sidebarClass={sidebarClass} handleChatClick={handleChatClick} />
 				<Chat handleBackClick={handleBackClick} className={chatClass} />
 			</div>
 		</div>
