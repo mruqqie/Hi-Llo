@@ -18,7 +18,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<BrowserRouter>
+			<BrowserRouter basename="/Hi-Llo">
 				<Routes>
 					<Route path="/">
 						<Route
@@ -29,7 +29,7 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
-						<Route path="login" element={<Login />} />
+						<Route path="/login" element={<Login />} />
 						<Route index path="/" element={<Register />} />
 					</Route>
 				</Routes>
